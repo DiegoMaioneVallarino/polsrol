@@ -14,7 +14,7 @@
             <div class="dropdown">
                 <button>Monstruos</button>
                 <div class="dropdown-content">
-                    <!-- Aquí iría una lista de monstruos extraída de los archivos JSON -->
+                    <!-- Aquí irá una lista de monstruos extraída de los archivos JSON -->
                     <a href="#" data-monster="magician">Magician</a>
                     <!-- Añadir más monstruos según sea necesario -->
                 </div>
@@ -34,5 +34,23 @@
             <!-- Información general sobre el tema -->
         </section>
     </main>
+    <script>
+        function loadMonster(monsterFilename) {
+            const baseURL = 'https://diegomaionevallarino.github.io/polsrol/';
+            fetch(`${baseURL}/Monstruos/${monsterFilename}.json`)
+                .then(response => response.json())
+                .then(monsterData => {
+                    const monsterSection = document.querySelector('#lista-monstruos');
+                    monsterSection.innerHTML = JSON.stringify(monsterData, null, 2);
+                });
+        }
+
+        document.querySelector('.dropdown-content').addEventListener('click', event => {
+            if (event.target.tagName === 'A') {
+                const monsterName = event.target.getAttribute('data-monster');
+                loadMonster(monsterName);
+            }
+        });
+    </script>
 </body>
 </html>
