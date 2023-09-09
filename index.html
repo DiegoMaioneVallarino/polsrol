@@ -34,17 +34,9 @@
             <!-- Información general sobre el tema -->
         </section>
     </main>
+    <script src="js/generateMonsterHtml.js"></script>
+    <script src="js/loadMonster.js"></script>
     <script>
-        function loadMonster(monsterFilename) {
-            const baseURL = 'https://diegomaionevallarino.github.io/polsrol/';
-            fetch(`${baseURL}/Monstruos/${monsterFilename}.json`)
-                .then(response => response.json())
-                .then(monsterData => {
-                    const monsterSection = document.querySelector('#lista-monstruos');
-                    monsterSection.innerHTML = JSON.stringify(monsterData, null, 2);
-                });
-        }
-
         document.querySelector('.dropdown-content').addEventListener('click', event => {
             if (event.target.tagName === 'A') {
                 const monsterName = event.target.getAttribute('data-monster');
