@@ -10,7 +10,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 20px;
+    height: 67px;
     background: linear-gradient(272deg, #750025, #000000);
 }
 
